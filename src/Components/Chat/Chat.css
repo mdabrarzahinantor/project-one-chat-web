@@ -1,0 +1,240 @@
+.chat {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  flex-direction: column;
+  width: fit-content;
+  background-color: #fff;
+  border-radius: 3px;
+  max-width: 50%;
+  height: fit-content;
+  margin-top: 1rem;
+  position: relative;
+}
+.chat-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 30px;
+  background-color: #202225;
+  padding: 0.4rem;
+  border-radius: 2px 2px 0 0;
+}
+.chat-header-pic {
+  width: 20px;
+  height: 20px;
+  background-color: #000;
+  border-radius: 50%;
+}
+.chat-header-name {
+  margin-left: 0.5rem;
+}
+.chat-header-name {
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: #fff;
+  opacity: 0.9;
+}
+.chat-header-time {
+  font-size: 0.6rem;
+  color: #fff;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  bottom: -14px;
+  pointer-events: none;
+  transition: 0.3s all ease;
+}
+.chat:hover .chat-header-time {
+  opacity: 1;
+}
+.chat .message {
+  background-color: #2f3136;
+  color: #fff;
+  padding: 0.6rem;
+  font-size: 1.3rem;
+  border-radius: 0 0 2px 2px;
+  width: 100%;
+}
+.chat .message div {
+  overflow: hidden;
+  width: 100%;
+}
+.sender {
+  margin-right: auto;
+  margin-left: 1rem;
+}
+.receiver {
+  margin-left: auto;
+  margin-right: 1rem;
+}
+.receiver .chat-header {
+  background-color: rgb(236, 236, 236);
+}
+.receiver .chat-header-name {
+  color: #1e1e1e;
+}
+.receiver .chat-header-time {
+  color: #fff;
+}
+.receiver .message {
+  color: #000;
+  background-color: #fff;
+}
+
+@media (max-width: 450px) {
+  .message {
+    font-size: 1rem !important;
+  }
+  .chat {
+    max-width: 70%;
+  }
+}
+
+.chat-reactor {
+  position: absolute;
+  right: 10px;
+  bottom: 5px;
+  color: #1e1e1e;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s all ease;
+}
+.receiver .chat-reactor {
+  position: absolute;
+  right: 10px;
+  bottom: 5px;
+  color: rgb(236, 236, 236);
+}
+
+.chat:hover .chat-reactor {
+  opacity: 1;
+  pointer-events: visible;
+}
+.chat-reactor:hover {
+  cursor: pointer;
+  color: rgba(253, 59, 59, 0.527);
+}
+
+.active {
+  opacity: 1;
+  color: rgb(253, 59, 59) !important;
+}
+
+.chat-image {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.chat-image img {
+  position: relative;
+  width: 100%;
+}
+
+.message img,
+.message area,
+.message address,
+.message aside,
+.message audio,
+.message base,
+.message bdi,
+.message bdo,
+.message blockquote,
+.message button,
+.message body,
+.message caption,
+.message circle,
+.message cite,
+.message code,
+.message col,
+.message colgroup,
+.message data,
+.message datalist,
+.message dd,
+.message del,
+.message details,
+.message dfn,
+.message dialog,
+.message dl,
+.message dt,
+.message em,
+.message embed,
+.message fieldset,
+.message figcaption,
+.message figure,
+.message footer,
+.message form,
+.message head,
+.message header,
+.message hr,
+.message html,
+.message iframe,
+.message img,
+.message input,
+.message ins,
+.message kbd,
+.message label,
+.message legend,
+.message link,
+.message ul,
+.message li,
+.message main,
+.message map,
+.message mark,
+.message meta,
+.message meter,
+.message nav,
+.message noscript,
+.message ol,
+.message object,
+.message optgroup,
+.message option,
+.message output,
+.message param,
+.message path,
+.message pattern,
+.message picture,
+.message polygon,
+.message polyline,
+.message rb,
+.message rp,
+.message rect,
+.message rtc,
+.message ruby,
+.message s,
+.message samp,
+.message script,
+.message section,
+.message select,
+.message small,
+.message solidcolor,
+.message source,
+.message stop,
+.message style,
+.message sub,
+.message svg,
+.message textarea,
+.message textPath,
+.message input,
+.message tfoot,
+.message th,
+.message thead,
+.message time,
+.message title,
+.message tr,
+.message track,
+.message tspan,
+.message u,
+.message ul,
+.message video,
+.message view {
+  display: none;
+}
+
+.message a {
+  color: rgb(15, 139, 255);
+  text-decoration: underline !important;
+}

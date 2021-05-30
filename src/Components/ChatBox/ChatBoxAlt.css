@@ -1,0 +1,12 @@
+.alt-chat {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 2rem;
+  height: 100vh;
+  font-weight: bold;
+  background-color: #36393f;
+  color: #fff;
+}

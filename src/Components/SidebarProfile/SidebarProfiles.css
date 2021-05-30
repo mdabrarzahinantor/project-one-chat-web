@@ -1,0 +1,121 @@
+.sidebar-profile {
+  position: relative;
+  max-width: 100%;
+  height: 90px;
+  background-color: #36393f;
+
+  display: flex;
+  align-items: center;
+
+  transition: all 0.3s ease;
+}
+.active-profile {
+  opacity: 0.9 !important;
+}
+.sidebar-profile:first-child {
+  border-radius: 2px 2px 0 0;
+}
+.sidebar-profile:last-child {
+  border-radius: 0px 0px 2px 2px;
+}
+.sidebar-profile-pic {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-left: 1rem;
+  background-color: #fff !important;
+}
+.sidebar-profile-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  margin-left: 1rem;
+}
+.sidebar-profile-container-header {
+  font-size: 1.3rem;
+  color: #202225;
+  font-weight: bold;
+  color: #fff;
+}
+.sidebar-profile-container-msg {
+  font-size: 1rem !important;
+
+  color: rgba(255, 255, 255, 0.794);
+}
+.sidebar-profile-container-msg div,
+.sidebar-profile-container-msg h1,
+.sidebar-profile-container-msg h2,
+.sidebar-profile-container-msg h3,
+.sidebar-profile-container-msg h4,
+.sidebar-profile-container-msg h5,
+.sidebar-profile-container-msg h6,
+.sidebar-profile-container-msg i,
+.sidebar-profile-container-msg b {
+  font-size: 1rem !important;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.794);
+}
+.sidebar-profile-container-msg input,
+.sidebar-profile-container-msg progress {
+  display: none;
+}
+.sidebar-profile:hover {
+  opacity: 0.9;
+  cursor: pointer;
+}
+
+@media (max-width: 920px) {
+  .sidebar-profile {
+    width: 100%;
+    height: 70px;
+    background: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sidebar-profile-pic {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-left: 0rem !important;
+  }
+  .sidebar-profile-container {
+    display: none;
+  }
+  .sidebar-profile-container-header {
+    font-size: 1.2rem;
+    color: #202225;
+    font-weight: bold;
+  }
+  .sidebar-profile-container-msg {
+    font-size: 0.9rem;
+    color: #202225;
+  }
+  .sidebar-profile:hover {
+    opacity: 0.7;
+    cursor: pointer;
+  }
+}
+
+.more {
+  position: absolute;
+  right: 1rem;
+  font-size: 1.2rem;
+  color: #fff;
+  background-color: #202225;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: 0.4s all ease;
+  z-index: 100;
+}
+.sidebar-profile:hover .more {
+  opacity: 1;
+}
