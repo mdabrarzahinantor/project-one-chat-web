@@ -30,7 +30,8 @@ function SignUp() {
             setEmail("");
             setUsername("");
             setUrl("");
-          });
+          })
+          .catch((error) => alert(error.message));
       });
     } else {
       alert("Choose A Profile Picture");
