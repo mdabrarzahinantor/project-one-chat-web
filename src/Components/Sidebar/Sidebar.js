@@ -17,7 +17,7 @@ function Sidebar() {
   const [loading, setLoading] = useState(true);
 
   const [style, setStyle] = useState(
-    user.uid === "hbrqvFUDyeY7vZT4R31kLTGlxlr1"
+    user.uid === "zYOQ7uajkqWyI9FonJVGwS1UTfu2"
       ? { display: "flex" }
       : { display: "none" }
   );

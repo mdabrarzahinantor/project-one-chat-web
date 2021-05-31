@@ -9,7 +9,7 @@
   border-radius: 3px;
   max-width: 50%;
   height: fit-content;
-  margin-top: 1rem;
+  margin-top: 0.2rem;
   position: relative;
 }
 .chat-header {
@@ -49,6 +49,12 @@
 }
 .chat:hover .chat-header-time {
   opacity: 1;
+  z-index: 10000;
+  padding: 0.5rem;
+  border-radius: 3px;
+  font-weight: bold;
+  background-color: #fff;
+  color: #202225;
 }
 .chat .message {
   background-color: #2f3136;
@@ -77,7 +83,12 @@
   color: #1e1e1e;
 }
 .receiver .chat-header-time {
-  color: #fff;
+  color: #fff !important;
+  background-color: #1e1e1e !important;
+  z-index: 10000;
+  padding: 0.5rem;
+  border-radius: 3px;
+  font-weight: bold;
 }
 .receiver .message {
   color: #000;
@@ -89,7 +100,12 @@
     font-size: 1rem !important;
   }
   .chat {
-    max-width: 70%;
+    max-width: 90%;
+  }
+}
+@media (max-width: 920px) {
+  .chat {
+    max-width: 90%;
   }
 }
 
@@ -121,6 +137,16 @@
 .active {
   opacity: 1;
   color: rgb(253, 59, 59) !important;
+}
+.active1 {
+  pointer-events: none;
+  cursor: default;
+  opacity: 1;
+  color: rgb(253, 59, 59) !important;
+}
+.active1:hover {
+  cursor: default;
+  color: rgba(253, 59, 59, 0.527);
 }
 
 .chat-image {
@@ -169,7 +195,6 @@
 .message form,
 .message head,
 .message header,
-.message hr,
 .message html,
 .message iframe,
 .message img,

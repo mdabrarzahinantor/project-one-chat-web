@@ -130,83 +130,88 @@ function ChatBox({ match }) {
       {/* Main----------------
       -------------------
       ----------------------- */}
-      <form className="chat-box-footer">
-        <div className="chat-box-footer-left">
-          <input
-            onChange={(e) => {
-              const image = e.target.files[0];
-              if (image) {
-                setDone(false);
-                console.log(image.name);
-                const uploadTask = storage
-                  .ref(`chat-images/${image.name}`)
-                  .put(image);
-
-                uploadTask.on(
-                  "state_changed",
-                  (snapshot) => {
-                    // progress function
-                    const progress = Math.round(
-                      (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-                    );
-                    setProgress(progress);
-                  },
-                  (error) => {
-                    // Error function
-                    console.log(error);
-                    alert(error.message);
-                  },
-                  () => {
-                    storage
-                      .ref("chat-images")
-                      .child(image.name)
-                      .getDownloadURL()
-                      .then((url) => {
-                        setImageUrl(url);
-                        setProgress(0);
-                        setDone(true);
-                      });
-                  }
-                );
-              }
-            }}
-            type="file"
-            id="file"
-          ></input>
-          <label htmlFor="file">
-            <i className="fas fa-image    "></i>
-          </label>
-        </div>
-        <div className="chat-box-footer-middle">
-          {!done ? (
-            <div className="file-loader">
-              <div className="bx">
-                <span style={{ width: `${progress}%` }}></span>
-              </div>
-            </div>
-          ) : (
+      {(user.uid !== "zYOQ7uajkqWyI9FonJVGwS1UTfu2") &
+      (roomId === "7FE1ZkPJHcQsByXSY51n") ? (
+        ""
+      ) : (
+        <form className="chat-box-footer">
+          <div className="chat-box-footer-left">
             <input
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              type="text"
+              onChange={(e) => {
+                const image = e.target.files[0];
+                if (image) {
+                  setDone(false);
+                  console.log(image.name);
+                  const uploadTask = storage
+                    .ref(`chat-images/${image.name}`)
+                    .put(image);
+
+                  uploadTask.on(
+                    "state_changed",
+                    (snapshot) => {
+                      // progress function
+                      const progress = Math.round(
+                        (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+                      );
+                      setProgress(progress);
+                    },
+                    (error) => {
+                      // Error function
+                      console.log(error);
+                      alert(error.message);
+                    },
+                    () => {
+                      storage
+                        .ref("chat-images")
+                        .child(image.name)
+                        .getDownloadURL()
+                        .then((url) => {
+                          setImageUrl(url);
+                          setProgress(0);
+                          setDone(true);
+                        });
+                    }
+                  );
+                }
+              }}
+              type="file"
+              id="file"
             ></input>
-          )}
-        </div>
-        <div className="chat-box-footer-right">
-          <button
-            onClick={
-              message
-                ? sendMessage
-                : (e) => {
-                    e.preventDefault();
-                    alert("Unable To Send Empty Message XD");
-                  }
-            }
-          >
-            <i className="fas fa-paper-plane    "></i>
-          </button>
-        </div>
-      </form>
+            <label htmlFor="file">
+              <i className="fas fa-image    "></i>
+            </label>
+          </div>
+          <div className="chat-box-footer-middle">
+            {!done ? (
+              <div className="file-loader">
+                <div className="bx">
+                  <span style={{ width: `${progress}%` }}></span>
+                </div>
+              </div>
+            ) : (
+              <input
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                type="text"
+              ></input>
+            )}
+          </div>
+          <div className="chat-box-footer-right">
+            <button
+              onClick={
+                message
+                  ? sendMessage
+                  : (e) => {
+                      e.preventDefault();
+                      alert("Unable To Send Empty Message XD");
+                    }
+              }
+            >
+              <i className="fas fa-paper-plane    "></i>
+            </button>
+          </div>
+        </form>
+      )}
     </div>
   );
 }

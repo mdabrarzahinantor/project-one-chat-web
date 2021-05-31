@@ -33,10 +33,11 @@
   margin-left: 1rem;
 }
 .sidebar-profile-container-header {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   color: #202225;
   font-weight: bold;
   color: #fff;
+  text-transform: uppercase;
 }
 .sidebar-profile-container-msg {
   font-size: 1rem !important;
@@ -118,4 +119,19 @@
 }
 .sidebar-profile:hover .more {
   opacity: 1;
+}
+.sidebar-new {
+  font-weight: bold;
+  font-size: 1.1rem;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  color: #36393f;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: 5px;
+  bottom: 5px;
 }

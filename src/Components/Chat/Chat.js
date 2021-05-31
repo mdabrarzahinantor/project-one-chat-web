@@ -79,7 +79,11 @@ function Chat({
       <Link to={`/rooms/${roomId}/${id}`}>
         <div
           onClick={() => {
-            setReact(!react);
+            if (user.uid === "zYOQ7uajkqWyI9FonJVGwS1UTfu2") {
+              setReact(!react);
+            } else {
+              setReact(react);
+            }
 
             if (roomId && id) {
               db.collection("rooms")
@@ -89,7 +93,12 @@ function Chat({
                 .update({ isReacted: !react });
             }
           }}
-          className={`chat-reactor ${react ? "active" : ""}`}
+          title="Only Admin Can React :)"
+          className={
+            user.uid === "zYOQ7uajkqWyI9FonJVGwS1UTfu2"
+              ? `chat-reactor ${react ? "active" : ""}`
+              : `chat-reactor ${react ? "active1" : ""}`
+          }
         >
           <i className="fas fa-heart"></i>
         </div>

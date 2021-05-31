@@ -31,14 +31,7 @@ const SidebarProfile = ({ id, url, name, style }) => {
 
   return (
     <Link to={`/rooms/${id}`}>
-      <div
-        onClick={() => {
-          document
-            .querySelector(".sidebar-profile")
-            .classList.add("active-profile");
-        }}
-        className="sidebar-profile"
-      >
+      <div className="sidebar-profile">
         <div
           style={{
             background: `url(${url})`,
@@ -49,18 +42,22 @@ const SidebarProfile = ({ id, url, name, style }) => {
         ></div>
         <div className="sidebar-profile-container">
           <div className="sidebar-profile-container-header">{name}</div>
-          <div
-            dangerouslySetInnerHTML={{
-              __html: messages
-                ? messages[0]?.message.length > 16
-                  ? messages[0]?.message?.substr(0, 17) + "..."
-                  : messages[0]?.message
-                : "",
-            }}
-            className="sidebar-profile-container-msg"
-          >
-            {}
-          </div>
+          {id === "7FE1ZkPJHcQsByXSY51n" ? (
+            ""
+          ) : (
+            <div
+              dangerouslySetInnerHTML={{
+                __html: messages
+                  ? messages[0]?.message.length > 16
+                    ? messages[0]?.message?.substr(0, 17) + "..."
+                    : messages[0]?.message
+                  : "",
+              }}
+              className="sidebar-profile-container-msg"
+            >
+              {}
+            </div>
+          )}
           <div
             style={{ display: style.display }}
             onClick={() => handleDelete(id)}
