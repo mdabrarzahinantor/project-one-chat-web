@@ -28,11 +28,6 @@ function Chat({
   };
 
   useEffect(() => {
-    const replacedMessage = msg.replace(
-      "script",
-      "h1>!Dont Be Over Smart!</h1>"
-    );
-
     var n = msg.search("script");
     console.log(n);
 
@@ -68,6 +63,24 @@ function Chat({
           {new Date(time?.toDate()).toUTCString() === "Invalid Date"
             ? " "
             : new Date(time?.toDate()).toUTCString()}
+        </div>
+
+        <div
+          onClick={(e) => {
+            if (uid === user.uid) {
+              db.collection("rooms")
+                .doc(roomId)
+                .collection("messages")
+                .doc(id)
+                .update({
+                  message: "<b>This message has been deleted.</b>",
+                })
+                .then(setReplacedMsg("<b>This message has been deleted.</b>"));
+            }
+          }}
+          className={`chat-del ${user.uid === uid ? "" : "display-del"}`}
+        >
+          <i class="fas fa-trash    "></i>
         </div>
       </div>
       <div style={{ display: imageBool }} className="chat-image">
