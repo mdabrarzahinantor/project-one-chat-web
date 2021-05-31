@@ -59,3 +59,7 @@
   -moz-animation: spin 1s linear infinite;
   animation: spin 1s linear infinite;
 }
+
+body {
+  background-color: #202225;
+}
