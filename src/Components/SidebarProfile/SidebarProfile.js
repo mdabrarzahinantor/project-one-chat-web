@@ -45,17 +45,21 @@ const SidebarProfile = ({ id, url, name, style }) => {
           {id === "7FE1ZkPJHcQsByXSY51n" ? (
             ""
           ) : (
-            <div
-              dangerouslySetInnerHTML={{
-                __html: messages
-                  ? messages[0]?.message.length > 16
-                    ? messages[0]?.message?.substr(0, 17) + "..."
-                    : messages[0]?.message
-                  : "",
-              }}
-              className="sidebar-profile-container-msg"
-            >
-              {}
+            <div style={{ display: "flex" }}>
+              {messages[0]?.name}-
+              <div
+                style={{ display: "flex" }}
+                dangerouslySetInnerHTML={{
+                  __html: messages
+                    ? messages[0]?.message.length > 16
+                      ? messages[0]?.message?.substr(0, 17) + "..."
+                      : messages[0]?.message
+                    : "",
+                }}
+                className="sidebar-profile-container-msg"
+              >
+                {}
+              </div>
             </div>
           )}
           <div

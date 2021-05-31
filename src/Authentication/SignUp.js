@@ -47,6 +47,10 @@ function SignUp() {
       <form onSubmit={handleSubmit}>
         <input
           onChange={(e) => {
+            dispatch({
+              type: actionTypes.SET_IMAGE,
+              image: e.target.files[0],
+            });
             setLoading(true);
             const uploadTask = storage
               .ref(`user-images/${e.target.files[0].name}`)
@@ -90,7 +94,7 @@ function SignUp() {
 
         {loading ? (
           <div className="profile-pic-laoder">
-            <i class="fas fa-circle-notch    "></i>
+            <i className="fas fa-circle-notch    "></i>
           </div>
         ) : (
           <>

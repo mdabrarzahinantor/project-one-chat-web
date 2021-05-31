@@ -6,7 +6,7 @@ import db, { auth, storage } from "../../Firebase/Firebase";
 import { actionTypes } from "../../Global/Reducer";
 function Sidebar() {
   const [showSidebarChatAdd, setShowSidebarChatAdd] = useState(false);
-  const [{ user }, dispatch] = useStateValue();
+  const [{ user, imageG }, dispatch] = useStateValue();
 
   const [avatarUrl, setAvatarUrl] = useState(`url(${user.photoURL})`);
   const [width, setWidth] = useState(0);
@@ -134,7 +134,9 @@ function Sidebar() {
             backgroundColor: "#fff",
           }}
           className="sidebar-avatar"
-        ></div>
+        >
+          {avatarUrl ? "" : <img>{imageG}</img>}
+        </div>
         <div className="sidebar-header-name">{user.displayName}</div>
         <button
           onClick={() => {

@@ -1,11 +1,13 @@
 export const initialState = {
   user: null,
   roomId: null,
+  imageG: null,
 };
 
 export const actionTypes = {
   SET_USER: "SET_USER",
   DEL_USER: "DEL_USER",
+  SET_G: "SET_IMAGE",
 };
 
 const reducer = (state, action) => {
@@ -19,6 +21,11 @@ const reducer = (state, action) => {
       return {
         ...state,
         user: null,
+      };
+    case actionTypes.SET_IMAGE:
+      return {
+        ...state,
+        imageG: action?.image,
       };
 
     default:

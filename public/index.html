@@ -33,7 +33,10 @@
     />
     <title>React Chat App</title>
   </head>
-  <body>
+  <body onload="preload()">
+    <div id="preloader" class="preloader">
+      <i class="fas fa-circle-notch"></i>
+    </div>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!--
@@ -46,5 +49,10 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script>
+      function preload() {
+        document.getElementById("preloader").style.display = "none";
+      }
+    </script>
   </body>
 </html>

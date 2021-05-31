@@ -41,8 +41,9 @@
 }
 .sidebar-profile-container-msg {
   font-size: 1rem !important;
+  font-weight: normal !important;
 
-  color: rgba(255, 255, 255, 0.794);
+  color: rgba(255, 255, 255, 0.616);
 }
 .sidebar-profile-container-msg div,
 .sidebar-profile-container-msg h1,
