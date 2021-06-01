@@ -73,6 +73,7 @@ function ChatBox({ match }) {
       db.collection("personal-collections")
         .doc(ID)
         .collection("messages")
+        .orderBy("timestamp", "asc")
         .onSnapshot((snapshot) => {
           setMessages(
             snapshot.docs.map((doc) => ({
