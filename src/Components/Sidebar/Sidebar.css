@@ -49,6 +49,9 @@
   .sidebar-avatar {
     margin-left: 0rem !important;
   }
+  .header-cnt {
+    font-size: 0.8rem !important;
+  }
 }
 
 .sidebar-add {
@@ -169,4 +172,16 @@
 }
 .logout:hover {
   transform: translateY(2px);
+}
+
+.sidebar-container .header-cnt {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  margin-top: 0.7rem;
+  margin-bottom: 0.7rem;
+  background-color: #43474e;
+  padding: 0.1rem;
+  border-radius: 3px;
 }

@@ -34,7 +34,13 @@ function App() {
                 path="/rooms/:roomId/:msgId"
                 component={ChatBox}
               ></Route>
+
               <Route exact path="/rooms/:roomId/" component={ChatBox}></Route>
+              <Route
+                exact
+                path="/personal/:chatID/"
+                component={ChatBox}
+              ></Route>
               <Route exact path="/" component={ChatBoxAlt}></Route>
             </Switch>
           </Router>

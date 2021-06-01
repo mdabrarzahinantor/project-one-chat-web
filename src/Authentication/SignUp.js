@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { auth, storage } from "../Firebase/Firebase";
+import db, { auth, storage } from "../Firebase/Firebase";
 import { actionTypes } from "../Global/Reducer";
 import { useStateValue } from "../Global/StateProvider";
 import "./Authentication.css";
@@ -23,8 +23,13 @@ function SignUp() {
         result.user
           .updateProfile({ displayName: username, photoURL: url })
           .then(() => {
+            db.collection("users").doc(result.user.uid).set({
+              userEmail: result.user.email,
+              userPhotoURL: result.user.photoURL,
+              userDisplayName: result.user.displayName,
+            });
             dispatch({ type: actionTypes.SET_USER, user: result.user });
-
+            console.log(result.user);
             setLoading(false);
             setPassword("");
             setEmail("");
@@ -37,10 +42,6 @@ function SignUp() {
       alert("Choose A Profile Picture");
     }
   };
-
-  useEffect(() => {
-    console.log(user);
-  }, [user]);
 
   return (
     <div className="sign-up">

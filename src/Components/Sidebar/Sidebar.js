@@ -4,6 +4,7 @@ import SidebarProfile from "../SidebarProfile/SidebarProfile";
 import { useStateValue } from "../../Global/StateProvider";
 import db, { auth, storage } from "../../Firebase/Firebase";
 import { actionTypes } from "../../Global/Reducer";
+import PersonalChat from "../../PersonalChat/PersonalChat";
 function Sidebar() {
   const [showSidebarChatAdd, setShowSidebarChatAdd] = useState(false);
   const [{ user, imageG }, dispatch] = useStateValue();
@@ -15,6 +16,8 @@ function Sidebar() {
 
   const [rooms, setRooms] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  const [authUsers, setAuthUsers] = useState(null);
 
   const [style, setStyle] = useState(
     user.uid === "zYOQ7uajkqWyI9FonJVGwS1UTfu2"
@@ -38,6 +41,19 @@ function Sidebar() {
   useEffect(() => {
     setLoading(rooms ? false : true);
   }, [rooms]);
+
+  useEffect(() => {
+    const unsub = db.collection("users").onSnapshot((snapshot) => {
+      setAuthUsers(
+        snapshot.docs.map((doc) => ({
+          id: doc.id,
+          data: doc.data(),
+        }))
+      );
+    });
+
+    return () => unsub();
+  }, []);
 
   const handleChange = (e) => {
     if (e.target.files[0]) {
@@ -166,6 +182,20 @@ function Sidebar() {
               />
             );
           })
+        )}
+        <div className="header-cnt"> Personal Chat</div>
+        {authUsers?.map((authUser) =>
+          authUser.id !== user.uid ? (
+            <PersonalChat
+              key={authUser.id}
+              id={authUser.id}
+              header={authUser.data.userDisplayName}
+              url={authUser.data.userPhotoURL}
+              uid={authUser.id}
+            />
+          ) : (
+            ""
+          )
         )}
       </div>
     </div>

@@ -13,11 +13,13 @@ function ChatBox({ match }) {
   const [messages, setMessages] = useState([]);
   const [url, setUrl] = useState("");
   const { roomId } = useParams();
+  const { chatID } = useParams();
   const [progress, setProgress] = useState(0);
   const [imageUrl, setImageUrl] = useState("");
   const [done, setDone] = useState(true);
   const [loading, setLoading] = useState(true);
   const messagesEndRef = useRef(null);
+  const [pathname, setPathname] = useState("");
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -48,12 +50,50 @@ function ChatBox({ match }) {
           );
         });
     }
-  }, [roomId]);
+    if (chatID) {
+      db.collection("users")
+        ?.doc(chatID)
+        .onSnapshot((snapshot) => {
+          setRoomName(snapshot?.data().userDisplayName);
+          setUrl(snapshot.data().userPhotoURL);
+        });
+      // db.collection("personal-msgs")
+
+      //   .orderBy("timestamp", "asc")
+      //   .onSnapshot((snapshot) => {
+      //     setMessages(
+      //       snapshot.docs.map((doc) => ({
+      //         id: doc.id,
+      //         data: doc.data(),
+      //       }))
+      //     );
+      //   });
+      const str = [chatID, user.uid];
+      const ID = str.sort().join("");
+      db.collection("personal-collections")
+        .doc(ID)
+        .collection("messages")
+        .onSnapshot((snapshot) => {
+          setMessages(
+            snapshot.docs.map((doc) => ({
+              id: doc.id,
+              data: doc.data(),
+            }))
+          );
+        });
+    }
+  }, [roomId, chatID]);
 
   // Send Message
   //
   //
   // +++++++
+
+  // useEffect(() => {
+  //   if (chatID) {
+
+  //   }
+  // }, [chatID]);
 
   useEffect(() => {
     setLoading(messages ? false : true);
@@ -62,21 +102,41 @@ function ChatBox({ match }) {
   const sendMessage = (e) => {
     e.preventDefault();
 
-    db.collection("rooms")
-      .doc(roomId)
-      .collection("messages")
-      .add({
-        message: message,
-        name: user.displayName,
-        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-        url: user.photoURL,
-        isReacted: false,
-        uid: user.uid,
-        hasImage: imageUrl ? true : false,
-        imageUrl: imageUrl,
-      })
-      .then(setImageUrl(""));
+    if (roomId) {
+      db.collection("rooms")
+        .doc(roomId)
+        .collection("messages")
+        .add({
+          message: message,
+          name: user.displayName,
+          timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+          url: user.photoURL,
+          isReacted: false,
+          uid: user.uid,
+          hasImage: imageUrl ? true : false,
+          imageUrl: imageUrl,
+        })
+        .then(setImageUrl(""));
+    }
+    if (chatID) {
+      const str = [chatID, user.uid];
+      const ID = str.sort().join("");
 
+      db.collection("personal-collections")
+        .doc(ID)
+        .collection("messages")
+        .add({
+          message: message,
+          name: user.displayName,
+          timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+          url: user.photoURL,
+          isReacted: false,
+          uid: user.uid,
+          hasImage: imageUrl ? true : false,
+          imageUrl: imageUrl,
+        })
+        .then(setImageUrl(""));
+    }
     setMessage("");
 
     document.querySelector(".chat-box").scrollIntoView();
