@@ -15,6 +15,7 @@ function Chat({
   uid,
   hasImage,
   imageUrl,
+  hasChatID,
 }) {
   const [react, setReact] = useState(reactHeart);
   const { roomId } = useParams();
@@ -78,7 +79,9 @@ function Chat({
                 .then(setReplacedMsg("<b>This message has been deleted.</b>"));
             }
           }}
-          className={`chat-del ${user.uid === uid ? "" : "display-del"}`}
+          className={`chat-del ${user.uid === uid ? "" : "display-del"} ${
+            hasChatID ? "display-del" : ""
+          }`}
         >
           <i class="fas fa-trash    "></i>
         </div>
