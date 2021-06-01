@@ -39,6 +39,7 @@ function PersonalChat({ header, url, id, uid }) {
             {messages[0]?.name === user.displayName ? "You" : messages[0]?.name}
             -
             <div
+              className="personal-chat-profile-container-msg"
               style={{ display: "flex" }}
               dangerouslySetInnerHTML={{
                 __html: messages

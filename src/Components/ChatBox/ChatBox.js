@@ -173,6 +173,7 @@ function ChatBox({ match }) {
           messages.map((msg) => (
             <div>
               <Chat
+                hasChatID={chatID ? true : false}
                 msg={msg.data.message}
                 name={msg.data.name}
                 time={msg.data.timestamp}
