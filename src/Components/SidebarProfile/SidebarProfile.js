@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import db from "../../Firebase/Firebase";
+import { useStateValue } from "../../Global/StateProvider";
 import "./SidebarProfiles.css";
 
 const SidebarProfile = ({ id, url, name, style }) => {
   const [messages, setMessages] = useState([]);
   const history = useHistory();
+  const [{ user }, dispatch] = useStateValue();
 
   const handleDelete = (id) => {
     db.collection("rooms")
@@ -46,7 +48,10 @@ const SidebarProfile = ({ id, url, name, style }) => {
             ""
           ) : (
             <div style={{ display: "flex" }}>
-              {messages[0]?.name}-
+              {messages[0]?.name === user.displayName
+                ? "You"
+                : messages[0]?.name}
+              -
               <div
                 style={{ display: "flex" }}
                 dangerouslySetInnerHTML={{
