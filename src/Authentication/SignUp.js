@@ -91,7 +91,7 @@ function SignUp() {
           accept="image/png, image/gif, image/jpeg,image/jpg"
           id="sign-up-file"
         ></input>
-        <label htmlFor="sign-up-file">Choose Profile Pic</label>
+        <label htmlFor="sign-up-file">Give Profile Pic</label>
 
         {loading ? (
           <div className="profile-pic-laoder">
