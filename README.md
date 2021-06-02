@@ -1,23 +1,23 @@
-# Chat Web App Using React & Firebase
+# Chat Web App Using React & Firebase 🔥
 
-visit  [Here](https://project-react-chat-app.netlify.app/).
+🔗 visit  [Here](https://project-react-chat-app.netlify.app/).
 
 ## Frontend:
 
-1. ReactJS
-2. React Router
+🔖 ReactJS
+🔖 React Router
 
 ## Backend:
 
-1. Firebase
-2. Firestore
-3. Storage
-4. Authentication
+🔥 Firebase
+🔥 Firestore
+🔥 Storage
+🔥 Authentication
 
 ## Design:
 
-1. CSS3
-2. Color Pallete - Black
-3. Grid
+🚀 CSS3
+🚀 Color Pallete - Black
+🚀 Grid
 
-#Thank You!
+# Thank You!
