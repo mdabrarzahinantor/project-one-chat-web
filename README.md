@@ -9,6 +9,18 @@
 
 ## 🔗 Visit  [Here](https://project-react-chat-app.netlify.app/).
 
+### First of all! Install Packages. Go to the folder and write this on your terminal.
+
+```npm
+npm install
+```
+
+### Then start the website. Write this.
+
+```npm
+npm start
+```
+
 ## Frontend:
 
 ### 🔖 ReactJS
@@ -58,5 +70,6 @@
 
 
 ## Give Us Feedback!
-## Thank You! ❤️
+## <div align='center'> Thank You! ❤️
+</div>
 
