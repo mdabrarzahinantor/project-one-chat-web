@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import db from "../../Firebase/Firebase";
 import { useStateValue } from "../../Global/StateProvider";
 import "./Chat.css";
+import Linkify from "react-linkify";
 
 function Chat({
   status,
@@ -87,10 +88,10 @@ function Chat({
         </div>
       </div>
       <div style={{ display: imageBool }} className="chat-image">
-        <img src={imageUrl}></img>
+        <img alt="" src={imageUrl}></img>
       </div>
-      <div className="message">
-        <div dangerouslySetInnerHTML={{ __html: replacedMsg }}></div>
+      <div style={{ overflow: "hidden" }} className="message">
+        <Linkify>{replacedMsg}</Linkify>
       </div>
       <Link to={`/rooms/${roomId}/${id}`}>
         <div
